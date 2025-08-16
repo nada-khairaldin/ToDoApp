@@ -11,7 +11,7 @@ function addHandler(e) {
 
 }
 
-function createTask(addInputValue){
+function createTask(addInputValue) {
 const taskContainer = document.createElement("div");
   taskContainer.classList.add("task");
 
@@ -28,9 +28,25 @@ const taskContainer = document.createElement("div");
   taskContainer.append(leftSide, deleteBtn);
   toDoList.append(taskContainer);
   addInput.value ="";
+
+  checkBox.addEventListener("change" , () =>{
+    CompleteHandler(taskContainer);
+  })
+
+  deleteBtn.addEventListener("click", ()=>{
+    deleteTaskHandler(taskContainer);
+  })
+
+  }
+
+
+  function CompleteHandler(taskContainer) {
+  taskContainer.classList.toggle("completed");
 }
 
-
+function deleteTaskHandler(taskContainer) {
+  taskContainer.remove();
+}
 
 addBtn.addEventListener("click", addHandler);
 addInput.addEventListener("keypress" , (e) => {
